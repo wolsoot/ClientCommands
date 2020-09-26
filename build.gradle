@@ -85,8 +85,14 @@ publishing {
 
     // select the repositories you want to publish to
     repositories {
-        // uncomment to publish to the local maven
-        // mavenLocal()
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/wolsoot/ClientCommands")
+            credentials {
+                username = githubPackagesUser ?: System.getenv("USERNAME")
+                password = githubPackagesToken ?: System.getenv("TOKEN")
+            }
+        }
     }
 }
 
